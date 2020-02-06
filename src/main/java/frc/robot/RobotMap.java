@@ -22,6 +22,18 @@ public class RobotMap {
 
     // Camera
 
-    // Controls
-
+    // Joysticks
+    public static final int JOYSTICK_MAIN = 0;
+    
+    // Button mappings - TODO Fix these!
+	public static final int BUTTON_X = 0;
+	public static final int BUTTON_Y = 1;
+    public static final int BUTTON_RB = 8;
+    
+    public static final int AXIS_LEFT_X = 1;
+    public static final int AXIS_LEFT_Y = 2;
+    public static final int AXIS_LEFT_TRIGGER = 3;
+    public static final int AXIS_RIGHT_X = 4;
+    public static final int AXIS_RIGHT_Y = 5;
+    public static final int AXIS_RIGHT_TRIGGER = 6;
 }

@@ -10,6 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.autonomous.AutonomousStrategy;
+import frc.robot.subcomponents.Climber;
+import frc.robot.subcomponents.DriveTrain;
+import lombok.Getter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +27,18 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+
+  // Operator interface:
+  @Getter
+  private OI oI = new OI();
+
+  // Subcomponents:
+  @Getter
+  private DriveTrain driveTrain = new DriveTrain();
+  @Getter
+  private Climber climber = new Climber();
+
+  private AutonomousStrategy autonomousStrategy = new AutonomousStrategy();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -70,6 +86,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    /* TODO Remove this!
     switch (m_autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
@@ -79,6 +96,8 @@ public class Robot extends TimedRobot {
         // Put default auto code here
         break;
     }
+    */
+    autonomousStrategy.update(this);
   }
 
   /**
@@ -86,6 +105,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    // Feed all of our subcomponents.
+    climber.update(this);
+    // m_intake.update(this);
+    driveTrain.update(this);
+    // m_shooter.update(this);
   }
 
   /**

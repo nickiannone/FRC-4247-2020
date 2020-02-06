@@ -16,7 +16,7 @@ public abstract class State<COMPONENT> {
         return this.name;
     }
 
-    protected abstract void onEnter(Robot r, COMPONENT component);
-    protected abstract void onUpdate(Robot r, COMPONENT component);
-    protected abstract Optional<String> checkTransition(Robot r, COMPONENT component);
+    protected abstract void onEnter(Robot r, COMPONENT c);
+    protected abstract void onUpdate(Robot r, COMPONENT c);
+    protected abstract Optional<String> checkTransition(Robot r, COMPONENT c);
 }
